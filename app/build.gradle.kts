@@ -16,6 +16,9 @@ repositories {
 }
 
 dependencies {
+
+    implementation("io.javalin:javalin:5.6.1")
+
     // Use JUnit Jupiter for testing.
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
 
@@ -23,6 +26,8 @@ dependencies {
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:32.1.1-jre")
+
+    implementation("org.slf4j:slf4j-simple:2.0.7")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
