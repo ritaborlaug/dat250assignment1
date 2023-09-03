@@ -60,6 +60,15 @@ public class App {
     }
 
 
+    /**
+     * This method converts a value from one unit to another.
+     * It can convert between inches, feet, miles and metres.
+     * 
+     * @param fromUnit The original unit to be converted from
+     * @param toUnit The unit to convert to
+     * @param value The value that is to be converted
+     * @return The final converted value
+     */
     public static double convertUnit(String fromUnit, String toUnit, double value) {
         double inMeters;
         
