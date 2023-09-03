@@ -53,44 +53,44 @@ public class App {
                     double value = Double.parseDouble(ctx.formParam("value"));
                     String fromUnit = ctx.formParam("sunit");
                     String toUnit = ctx.formParam("tunit");
-                    double inMeters;
-                    if (fromUnit.equals("in")) {
-                        inMeters = value * IN_TO_METER;
-                    } else if (fromUnit.equals("ft")) {
-                        inMeters = value * FT_TO_METER;
-                    } else if (fromUnit.equals("mi")) {
-                        inMeters = value * MI_TO_METER;
-                    } else if (fromUnit.equals("m")) {
-                        inMeters = value;
-                    } else {
-                        inMeters = Double.NaN;
-                    }
-                    double result;
-                    if (toUnit.equals("in")) {
-                        result = inMeters / IN_TO_METER;
-                    } else if (toUnit.equals("ft")) {
-                        result = inMeters / FT_TO_METER;
-                    } else if (toUnit.equals("mi")) {
-                        result = inMeters / MI_TO_METER;
-                    } else if (toUnit.equals("m")) {
-                        result = inMeters;
-                    } else {
-                        result = Double.NaN;
-                    }
+                    double result = convertUnit(fromUnit, toUnit, value);
                     ctx.result(Double.toString(result));
                 })
                 .start(9000);
     }
 
 
-}
+    public static double convertUnit(String fromUnit, String toUnit, double value) {
+        double inMeters;
+        
+        if (fromUnit.equals("in")) {
+            inMeters = value * IN_TO_METER;
+        } else if (fromUnit.equals("ft")) {
+            inMeters = value * FT_TO_METER;
+        } else if (fromUnit.equals("mi")) {
+            inMeters = value * MI_TO_METER;
+        } else if (fromUnit.equals("m")) {
+            inMeters = value;
+        } else {
+            inMeters = Double.NaN;
+        }
+        double result;
+        if (toUnit.equals("in")) {
+            result = inMeters / IN_TO_METER;
+        } else if (toUnit.equals("ft")) {
+            result = inMeters / FT_TO_METER;
+        } else if (toUnit.equals("mi")) {
+            result = inMeters / MI_TO_METER;
+        } else if (toUnit.equals("m")) {
+            result = inMeters;
+        } else {
+            result = Double.NaN;
+        }
+        return result;
+    }
 
-/*public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
-}*/
+}

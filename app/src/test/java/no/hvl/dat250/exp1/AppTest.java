@@ -11,4 +11,34 @@ class AppTest {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
+
+    @Test void convertInchesToMetres() {
+        double result = App.convertUnit("in", "m", 30);
+        assertEquals(0.762, result);
+    }
+
+    @Test void convertInchesToMiles() {
+        double result = App.convertUnit("in", "mi", 20000);
+        assertEquals(0.31565656565656564, result);
+    }
+
+    @Test void convertMilesToFeet() {
+        double result = App.convertUnit("mi", "ft", 2);
+        assertEquals(10560.0, result);
+    }
+
+    @Test void convertFeetToInches() {
+        double result = App.convertUnit("ft", "in", 30);
+        assertEquals(360.0, result);
+    }
+
+    @Test void convertToSame() {
+        double result = App.convertUnit("mi", "mi", 50);
+        assertEquals(50.0, result);
+    }
+
+    @Test void testInvalidInput() {
+        double result = App.convertUnit("in", "mi", Double.NaN);
+        assertTrue(Double.isNaN(result));
+    }
 }
